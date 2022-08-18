@@ -14,14 +14,28 @@ const { expect } = chai;
 
 describe('Should be able to login', () => {
 
-    it('should be able to login with tha right params', async () => {
+  afterEach(()=>{
+    (UserModel.findOne as sinon.SinonStub).restore();
+  })
+
+    it('should be able to login with right Body params', async () => {
       sinon.stub(UserModel, "findOne").resolves({} as Model);
       
       const response = await chai.request(app).post('/login')
+        .send({ email: 'admin@admin.com', password: 'secret_admin' })
       
       expect(response.status).to.equal(200)
 
-      sinon.restore();
+    })
+
+    it('should NOT be able to login with wrong Body params', async () => {
+      sinon.stub(UserModel, "findOne").resolves({} as Model);
+      
+      const response = await chai.request(app).post('/login')
+        .send({ email: 'xablau@admin.com’', password: 'secret_wrong’' })
+      
+      expect(response.status).to.equal(401)
+
     })
 
 });
