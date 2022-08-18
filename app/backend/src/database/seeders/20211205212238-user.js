@@ -2,6 +2,7 @@ module.exports = {
   up: async (queryInterface) => {
     await queryInterface.bulkInsert('users', [
       {
+        id: 'key1',
         username: 'Admin',
         role: 'admin',
         email: 'admin@admin.com',
@@ -9,6 +10,7 @@ module.exports = {
           // senha: secret_admin
       },
       {
+        id: 'key2',
         username: 'User',
         role: 'user',
         email: 'user@user.com',
