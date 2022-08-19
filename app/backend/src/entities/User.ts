@@ -1,7 +1,6 @@
 import { uuid } from 'uuidv4';
-import { IUser } from './interfaces/IUser';
 
-class User implements IUser {
+class User {
   public readonly id: string;
 
   public username: string;
