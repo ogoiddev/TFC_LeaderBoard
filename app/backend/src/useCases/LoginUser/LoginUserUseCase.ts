@@ -5,8 +5,8 @@ import { loginUserRequestDTO } from './LoginUserDTO';
 import User from '../../entities/User';
 
 class LoginUserUseCase {
-  static async query(query: loginUserRequestDTO) {
-    const userData = await UserModel.findOne({ where: { email: query.email } }) as User;
+  static async query(requestBody: loginUserRequestDTO) {
+    const userData = await UserModel.findOne({ where: { email: requestBody.email } }) as User;
 
     if (!userData) throw new ErrorType(401, 'Incorrect email or password');
     const token = JWT.createToken(userData);
