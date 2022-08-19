@@ -14,7 +14,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Should be able to login', () => {
+describe('/login Route', () => {
 
   afterEach(()=>{
     (UserModel.findOne as sinon.SinonStub).restore();
@@ -26,19 +26,46 @@ describe('Should be able to login', () => {
       const response = await chai.request(app).post('/login')
         .send({ email: 'admin@admin.com', password: 'secret_admin' })
       
-      JWT.createToken({ email: 'admin@admin.com', password: 'secret_admin' } as User)
+      JWT.createToken({
+        id: '1',
+        username: 'admin',
+        role: 'admin',
+        email: 'admin@admin.com',
+        password: 'secret_admin'
+      } as User)
       
       expect(response.status).to.equal(200)
 
     })
 
     it('should NOT be able to login with wrong Body params', async () => {
-      sinon.stub(UserModel, "findOne").resolves({} as Model);
+      sinon.stub(UserModel, "findOne").resolves(null);
       
       const response = await chai.request(app).post('/login')
-        .send({ email: 'xablau@admin.com’', password: 'secret_wrong’' })
+        .send({ email: 'xablau@admin.com', password: 'secret_wrong' })
+      
       
       expect(response.status).to.equal(401)
+
+    })
+
+    it('should NOT be able to login without email key params from the Body', async () => {
+      sinon.stub(UserModel, "findOne").resolves(null);
+      
+      const response = await chai.request(app).post('/login')
+        .send({ mail: 'admin@admin.com', password: 'secret_admin' })
+      
+      expect(response.status).to.equal(400)
+
+    })
+
+    it('should NOT be able to login without password key params from the Body', async () => {
+      sinon.stub(UserModel, "findOne").resolves(null);
+      
+      const response = await chai.request(app).post('/login')
+        .send({ email: 'admin@admin.com', pass: 'secret_admin' })
+      
+      expect(response.status).to.equal(400)
 
     })
 
