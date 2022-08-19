@@ -7,6 +7,8 @@ import { app } from '../app';
 
 import UserModel from '../database/models/UserModel';
 import { Model } from 'sequelize/types';
+import JWT from '../utils/JWT/JWT.Generate';
+import User from '../entities/User';
 
 chai.use(chaiHttp);
 
@@ -23,6 +25,8 @@ describe('Should be able to login', () => {
       
       const response = await chai.request(app).post('/login')
         .send({ email: 'admin@admin.com', password: 'secret_admin' })
+      
+      JWT.createToken({ email: 'admin@admin.com', password: 'secret_admin' } as User)
       
       expect(response.status).to.equal(200)
 
