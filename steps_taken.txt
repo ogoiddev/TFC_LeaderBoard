@@ -9,7 +9,7 @@
 * Bibliotecas instaladas no BackEnd:
 
 ```
-$ npm i joi cors @types/cors express-async-errors
+$ npm i joi cors @types/cors express-async-errors uuidv4
 ```
 
 * Bibliotecas declaradas em **`packages.npm`** para os testes:
