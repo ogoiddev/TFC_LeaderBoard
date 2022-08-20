@@ -4,7 +4,7 @@ import LoginUserController from '../useCases/LoginUser/LoginUserController';
 import LoginUserUseCase from '../useCases/LoginUser/LoginUserUseCase';
 
 export default class LoginFactory {
-  static async login(req: Request, res: Response) {
+  static login(req: Request, res: Response) {
     const loginRepository = new LoginUserRepository();
 
     const loginUseCase = new LoginUserUseCase(loginRepository);

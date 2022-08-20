@@ -1,7 +1,6 @@
 import * as express from 'express';
 import LoginFactory from '../factories/LoginUserFactory';
 import LoginUserValidateController from '../useCases/LoginUserValidate/LoginUserValidateController';
-import 'express-async-errors';
 
 const LoginRouter = express.Router();
 
