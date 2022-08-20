@@ -3,8 +3,8 @@ import * as chai from 'chai';
 // @ts-ignore
 
 import chaiHttp = require('chai-http');
-import { app } from '../app';
-import ValidateJWT from '../utils/JWT/JWT.Validate';
+import { app } from '../../app';
+import ValidateJWT from '../../utils/JWT/JWT.Validate';
 
 chai.use(chaiHttp);
 
@@ -22,6 +22,7 @@ describe('login/validate Route', () => {
     expect(response.status).to.equal(200)
     expect({ role }).to.deep.equal({ role: 'admin'})
 
+    sinon.restore()
   })
 
     it('should return an Error with wrong Auth', async () => {
