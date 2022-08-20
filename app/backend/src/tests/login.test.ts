@@ -3,12 +3,12 @@ import * as chai from 'chai';
 // @ts-ignore
 
 import chaiHttp = require('chai-http');
-import { app } from '../../app';
+import { app } from '../app';
 
-import UserModel from '../../database/models/UserModel';
+import UserModel from '../database/models/UserModel';
 import { Model } from 'sequelize/types';
-import JWT from '../../utils/JWT/JWT.Generate';
-import User from '../../entities/User';
+import JWT from '../utils/JWT/JWT.Generate';
+import User from '../entities/User';
 
 chai.use(chaiHttp);
 

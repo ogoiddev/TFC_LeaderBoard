@@ -2,7 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import db from '.';
 
 class TeamModel extends Model {
-  declare id: string;
+  declare id: number;
   declare teamName: string;
 
   // static associate(models) {

@@ -3,8 +3,8 @@ import * as chai from 'chai';
 // @ts-ignore
 
 import chaiHttp = require('chai-http');
-import { app } from '../../app';
-import ValidateJWT from '../../utils/JWT/JWT.Validate';
+import { app } from '../app';
+import ValidateJWT from '../utils/JWT/JWT.Validate';
 
 chai.use(chaiHttp);
 
