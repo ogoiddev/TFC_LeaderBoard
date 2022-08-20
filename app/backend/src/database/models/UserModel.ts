@@ -7,11 +7,8 @@ class UserModel extends Model {
   declare role: string;
   declare email: string;
   declare password: string;
-
-  // static associate(models) {
-  // User: Association<UserInfoData>
-  // }
 }
+
 UserModel.init({
   id: {
     allowNull: false,

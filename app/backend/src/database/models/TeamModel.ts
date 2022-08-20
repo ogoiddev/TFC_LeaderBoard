@@ -4,11 +4,8 @@ import db from '.';
 class TeamModel extends Model {
   declare id: number;
   declare teamName: string;
-
-  // static associate(models) {
-  // User: Association<UserInfoData>
-  // }
 }
+
 TeamModel.init({
   id: {
     type: DataTypes.INTEGER,
