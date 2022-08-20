@@ -10,4 +10,4 @@ COPY . .
 
 RUN npx tsc
 
-CMD ["npm", "start"]
+CMD [ "npm", "start" ]

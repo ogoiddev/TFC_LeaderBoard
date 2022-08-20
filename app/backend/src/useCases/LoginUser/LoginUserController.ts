@@ -1,16 +1,16 @@
 import { Request, Response } from 'express';
-import LoginUserUseCase from './LoginUserUseCase';
 import LoginUserRequestValidator from '../../utils/JOI/loginSchema';
-import 'express-async-errors';
+import { ILoginUserUseCase } from './interfaces/ILoginUserUseCase';
 
 class LoginUserController {
-  static async checkUserByEmail(req: Request, res: Response) {
+  constructor(private getToken: ILoginUserUseCase) { }
+
+  async checkRequestAndGetUserByEmail(req: Request, res: Response) {
     const loginUserRequest = req.body;
     LoginUserRequestValidator.check(loginUserRequest);
 
-    const token = await LoginUserUseCase.query(loginUserRequest);
-
-    res.status(200).json({ token });
+    const token = await this.getToken.query(loginUserRequest);
+    return res.status(200).json({ token });
   }
 }
 

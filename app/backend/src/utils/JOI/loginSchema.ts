@@ -1,9 +1,9 @@
 import Joi = require('joi');
-import { loginUserRequestDTO } from '../../useCases/LoginUser/LoginUserDTO';
+import { ILoginUserRequestDTO } from '../../useCases/LoginUser/LoginUserDTO';
 import ErrorType from '../error/errorConstructor';
 
 class LoginUserRequestValidator {
-  static check(loginUserRequest: loginUserRequestDTO) {
+  static check(loginUserRequest: ILoginUserRequestDTO) {
     const schema = Joi.object({
       email: Joi.string().email().required(),
       password: Joi.string().required().min(8),

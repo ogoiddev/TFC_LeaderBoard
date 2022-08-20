@@ -1,15 +1,18 @@
+import { ILoginUserRepository } from '../../repositories/interfaces/ILoginUserRepository';
 import ErrorType from '../../utils/error/errorConstructor';
 import JWT from '../../utils/JWT/JWT.Generate';
-import UserModel from '../../database/models/UserModel';
-import { loginUserRequestDTO } from './LoginUserDTO';
-import User from '../../entities/User';
+import { ILoginUserUseCase } from './interfaces/ILoginUserUseCase';
+import { ILoginUserRequestDTO } from './LoginUserDTO';
 
-class LoginUserUseCase {
-  static async query(requestBody: loginUserRequestDTO) {
-    const userData = await UserModel.findOne({ where: { email: requestBody.email } }) as User;
+class LoginUserUseCase implements ILoginUserUseCase {
+  constructor(private user: ILoginUserRepository) { }
+
+  async query(requestBody: ILoginUserRequestDTO): Promise<string> {
+    const userData = await this.user.getByEmail(requestBody.email);
 
     if (!userData) throw new ErrorType(401, 'Incorrect email or password');
-    const token = JWT.createToken(userData);
+
+    const token = JWT.createToken(userData) as string;
 
     return token;
   }
