@@ -1,8 +1,7 @@
-import * as express from 'express';
 import * as cors from 'cors';
-import LoginRouter from './routes/loginRoute';
+import * as express from 'express';
 import Errors from './middleware/errorMiddleware';
-import TeamListRouter from './routes/teamRoute';
+import Routes from './routes';
 
 class App {
   public app: express.Express;
@@ -28,8 +27,7 @@ class App {
     this.app.use(express.json());
     this.app.use(accessControl);
 
-    this.app.use(LoginRouter);
-    this.app.use(TeamListRouter);
+    this.app.use(Routes);
 
     this.app.use(Errors.middleware);
   }

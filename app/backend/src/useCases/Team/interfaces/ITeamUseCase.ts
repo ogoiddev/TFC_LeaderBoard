@@ -1,5 +1,6 @@
 import Team from '../../../entities/Team';
 
 export interface ITeamUseCase {
-  query(): Promise<Team[]>
+  queryAll(): Promise<Team[]>
+  queryById(id: number): Promise<Team>
 }

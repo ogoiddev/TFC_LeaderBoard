@@ -3,14 +3,14 @@ import TeamRepository from '../repositories/TeamRepository';
 import TeamController from '../useCases/Team/TeamController';
 import TeamUseCase from '../useCases/Team/TeamUseCase';
 
-class TeamListFactory {
-  static list(req: Request, res: Response) {
+class TeamFactory {
+  static team(req: Request, res: Response) {
     const listRepository = new TeamRepository();
     const listUseCase = new TeamUseCase(listRepository);
     const listController = new TeamController(listUseCase);
 
-    return listController.TeamList(req, res);
+    return listController.Team(req, res);
   }
 }
 
-export default TeamListFactory;
+export default TeamFactory;

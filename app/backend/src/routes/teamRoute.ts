@@ -1,8 +1,11 @@
 import * as express from 'express';
-import TamListFactory from '../factories/TeamListFactory';
+import TeamFactory from '../factories/TeamFactory';
+import TeamListFactory from '../factories/TeamListFactory';
 
-const TeamListRouter = express.Router();
+const TeamRouter = express.Router();
 
-TeamListRouter.get('/teams', TamListFactory.list);
+TeamRouter.get('/teams/:id', TeamFactory.team);
 
-export default TeamListRouter;
+TeamRouter.get('/teams', TeamListFactory.list);
+
+export default TeamRouter;

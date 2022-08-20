@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import LoginUserRequestValidator from '../../utils/JOI/loginSchema';
 import { ILoginUserUseCase } from './interfaces/ILoginUserUseCase';
 
+require('express-async-errors');
+
 class LoginUserController {
   constructor(private getToken: ILoginUserUseCase) { }
 
@@ -10,7 +12,7 @@ class LoginUserController {
     LoginUserRequestValidator.check(loginUserRequest);
 
     const token = await this.getToken.query(loginUserRequest);
-    return res.status(200).json({ token });
+    res.status(200).json({ token });
   }
 }
 
