@@ -2,11 +2,11 @@ import { DataTypes, Model } from 'sequelize';
 import db from '.';
 
 class UserModel extends Model {
-  id: string;
-  username: string;
-  role: string;
-  email!: string;
-  password!: string;
+  declare id: string;
+  declare username: string;
+  declare role: string;
+  declare email: string;
+  declare password: string;
 
   // static associate(models) {
   // User: Association<UserInfoData>

@@ -11,6 +11,21 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
+const teamList = [
+  {
+    "id": 1,
+    "teamName": "Avaí/Kindermann"
+  },
+  {
+    "id": 2,
+    "teamName": "Bahia"
+  },
+  {
+    "id": 3,
+    "teamName": "Botafogo"
+  },
+]
+
 describe('/teams Route', () => {
 
   // afterEach(() => {
@@ -18,7 +33,7 @@ describe('/teams Route', () => {
   // })
 
     it('should return a list of Teams', async () => {
-      // sinon.stub(UserModel, "findOne").resolves({} as Model);
+      // sinon.stub(UserModel, "findOne").resolves(teamList as Model);
       
       const response = await chai.request(app).post('/teams')
       
