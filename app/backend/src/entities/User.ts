@@ -1,12 +1,12 @@
 import { uuid } from 'uuidv4';
+import { IUser } from './interfaces/IUser';
 
-class User {
-  public readonly id: string;
-
-  public username: string;
-  public role: string;
-  public email: string;
-  public password: string;
+class User implements IUser {
+  readonly id: string;
+  username: string;
+  role: string;
+  email: string;
+  password: string;
 
   constructor(props: Omit<User, 'id'>, id?: string) {
     Object.assign(this, props);

@@ -1,10 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
+import Team from '../../entities/Team';
 import db from '.';
 
-class TeamModel extends Model {
-  declare id: number;
-  declare teamName: string;
-}
+class TeamModel extends Model<Team> {}
 
 TeamModel.init({
   id: {

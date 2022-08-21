@@ -1,4 +1,6 @@
-class Matches {
+import { IMatches } from './interfaces/IMatches';
+
+class Matches implements IMatches {
   id: number;
   homeTeam: number;
   homeTeamGoals: number;

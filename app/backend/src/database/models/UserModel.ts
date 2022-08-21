@@ -1,13 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
+import User from '../../entities/User';
 import db from '.';
 
-class UserModel extends Model {
-  declare id: string;
-  declare username: string;
-  declare role: string;
-  declare email: string;
-  declare password: string;
-}
+class UserModel extends Model<User> {}
 
 UserModel.init({
   id: {
