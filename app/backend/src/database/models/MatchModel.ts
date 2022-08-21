@@ -1,19 +1,11 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '.';
-import Matches from '../../entities/Matches';
+import Match from '../../entities/Match';
+import TeamModel from './TeamModel';
 
-class MatchesModel extends Model<Matches> {
-  static associate(models: Model) {
-    MatchesModel.hasMany(models._attributes, {
-      foreignKey: 'homeTeam',
-    });
-    MatchesModel.hasMany(models._attributes, {
-      foreignKey: 'awayTeam',
-    });
-  }
-}
+class MatchModel extends Model<Match> { }
 
-MatchesModel.init({
+MatchModel.init({
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -54,4 +46,24 @@ MatchesModel.init({
   timestamps: false,
 });
 
-export default MatchesModel;
+MatchModel.belongsTo(TeamModel, {
+  as: 'teamHome',
+  foreignKey: 'homeTeam',
+});
+
+MatchModel.belongsTo(TeamModel, {
+  as: 'teamAway',
+  foreignKey: 'awayTeam',
+});
+
+TeamModel.hasMany(MatchModel, {
+  as: 'matchHome',
+  foreignKey: 'homeTeam',
+});
+
+TeamModel.hasMany(MatchModel, {
+  as: 'matchAway',
+  foreignKey: 'awayTeam',
+});
+
+export default MatchModel;

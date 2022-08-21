@@ -9,7 +9,7 @@ class TeamFactory {
     const listUseCase = new TeamUseCase(listRepository);
     const listController = new TeamController(listUseCase);
 
-    return listController.Team(req, res);
+    return listController.getTeam(req, res);
   }
 }
 

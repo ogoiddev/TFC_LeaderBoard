@@ -1,6 +1,6 @@
-import { IMatches } from './interfaces/IMatches';
+import { IMatch } from './interfaces/IMatch';
 
-class Matches implements IMatches {
+class Match implements IMatch {
   id: number;
   homeTeam: number;
   homeTeamGoals: number;
@@ -8,9 +8,9 @@ class Matches implements IMatches {
   awayTeamGoals: number;
   inProgress: boolean;
 
-  constructor(props: Matches) {
+  constructor(props: Match) {
     Object.assign(this, props);
   }
 }
 
-export default Matches;
+export default Match;
