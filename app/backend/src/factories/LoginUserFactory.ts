@@ -6,11 +6,8 @@ import LoginUserUseCase from '../useCases/LoginUser/LoginUserUseCase';
 export default class LoginFactory {
   static login(req: Request, res: Response) {
     const loginRepository = new LoginUserRepository();
-
     const loginUseCase = new LoginUserUseCase(loginRepository);
-
     const loginController = new LoginUserController(loginUseCase);
-
     return loginController.checkRequestAndGetUserByEmail(req, res);
   }
 }

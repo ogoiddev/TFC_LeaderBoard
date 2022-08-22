@@ -1,6 +1,9 @@
-import Matches from '../../entities/Match';
+import MatchModel from '../../database/models/MatchModel';
+import Match from '../../entities/Match';
+import { IMatchUseCaseDTO } from '../../useCases/Match/MatchUseCaseDTO';
 
 export interface IMatchRepository {
-  getAll(): Promise<Matches[] | []>;
-  getById(id: number): Promise<Matches | null>
+  getAll(): Promise<Match[] | []>;
+  getById(id: number): Promise<Match | null>;
+  saveNewMatch(match: IMatchUseCaseDTO): Promise<MatchModel>;
 }
