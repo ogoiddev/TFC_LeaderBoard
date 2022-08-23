@@ -1,14 +1,26 @@
-import * as express from 'express';
-import SaveNewMatchFactory from '../factories/SaveNewMatchFactory';
-import MatchFactory from '../factories/MatchFactory';
-import MatchListFactory from '../factories/MatchListFactory';
+import { Request, Response, Router } from 'express';
+import { toMatches } from '../factories';
 
-const MatchRouter = express.Router();
+const MatchRouter = Router();
 
-MatchRouter.get('/matches/:id', MatchFactory.match);
+MatchRouter.get(
+  '/matches/:id',
+  (req: Request, res: Response) => toMatches.getById(req, res),
+);
 
-MatchRouter.get('/matches', MatchListFactory.list);
+MatchRouter.get(
+  '/matches',
+  (req: Request, res: Response) => toMatches.getAll(req, res),
+);
 
-MatchRouter.post('/matches', SaveNewMatchFactory.save);
+MatchRouter.patch(
+  '/matches/:id/finish',
+  (req: Request, res: Response) => toMatches.updateMatchStatus(req, res),
+);
+
+MatchRouter.post(
+  '/matches',
+  (req: Request, res: Response) => toMatches.saveNewMatch(req, res),
+);
 
 export default MatchRouter;

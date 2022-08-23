@@ -33,4 +33,8 @@ export default class MatchRepository implements IMatchRepository {
     const matchSaved = await this.matchModel.create({ ...match, inProgress: true });
     return matchSaved;
   }
+
+  async updateMatchStatus(id: number): Promise<void> {
+    await this.matchModel.update({ inProgress: false }, { where: { id } });
+  }
 }

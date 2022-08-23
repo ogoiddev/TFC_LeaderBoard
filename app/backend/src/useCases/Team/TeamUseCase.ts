@@ -1,16 +1,17 @@
 import { ITeamRepository } from '../../repositories/interfaces/ITeamRepository';
 import Team from '../../entities/Team';
 import ErrorType from '../../utils/error/errorConstructor';
+import { ITeamUseCase } from './interfaces/ITeamUseCase';
 
-class TeamUseCase {
+class TeamUseCase implements ITeamUseCase {
   constructor(private teamList: ITeamRepository) { }
 
-  async queryAll(): Promise<Team[] | []> {
+  async getAll(): Promise<Team[] | []> {
     const teamList = await this.teamList.getAll();
     return teamList;
   }
 
-  async queryById(id: number): Promise<Team> {
+  async getById(id: number): Promise<Team> {
     const team = await this.teamList.getById(id);
     if (!team) throw new ErrorType(400, 'Team not found');
     return team;

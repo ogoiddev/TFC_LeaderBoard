@@ -1,11 +1,16 @@
-import * as express from 'express';
-import TeamFactory from '../factories/TeamFactory';
-import TeamListFactory from '../factories/TeamListFactory';
+import { Request, Response, Router } from 'express';
+import { toTeams } from '../factories';
 
-const TeamRouter = express.Router();
+const TeamRouter = Router();
 
-TeamRouter.get('/teams/:id', TeamFactory.team);
+TeamRouter.get(
+  '/teams/:id',
+  (req: Request, res: Response) => toTeams.getById(req, res),
+);
 
-TeamRouter.get('/teams', TeamListFactory.list);
+TeamRouter.get(
+  '/teams',
+  (req: Request, res: Response) => toTeams.getAll(req, res),
+);
 
 export default TeamRouter;

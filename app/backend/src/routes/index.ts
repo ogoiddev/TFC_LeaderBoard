@@ -1,9 +1,9 @@
-import * as express from 'express';
+import { Router } from 'express';
 import LoginRouter from './loginRoute';
 import TeamRouter from './teamRoutes';
 import MatchRouter from './matchRoutes';
 
-const Routes = express.Router();
+const Routes = Router();
 
 Routes.use(LoginRouter);
 Routes.use(TeamRouter);

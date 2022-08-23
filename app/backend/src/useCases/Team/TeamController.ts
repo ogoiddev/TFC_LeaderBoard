@@ -1,19 +1,20 @@
 import { Request, Response } from 'express';
-import { ITeamUseCase } from './interfaces/ITeamUseCase';
+import { ITeamRepository } from '../../repositories/interfaces/ITeamRepository';
+import { ITeamController } from './interfaces/ITeamController';
 
 require('express-async-errors');
 
-class TeamController {
-  constructor(private teamList: ITeamUseCase) { }
+class TeamController implements ITeamController {
+  constructor(private teamList: ITeamRepository) { }
 
-  async getTeamList(_req: Request, res: Response) {
-    const teamList = await this.teamList.queryAll();
+  async getAll(_req: Request, res: Response) {
+    const teamList = await this.teamList.getAll();
     res.status(200).json(teamList);
   }
 
-  async getTeam(req: Request, res: Response) {
+  async getById(req: Request, res: Response) {
     const { id } = req.params;
-    const team = await this.teamList.queryById(Number(id));
+    const team = await this.teamList.getById(Number(id));
     res.status(200).json(team);
   }
 }
