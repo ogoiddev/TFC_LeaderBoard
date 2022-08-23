@@ -23,6 +23,7 @@ class MatchUseCase implements IMatchUseCase {
   async saveNewMatch(match: IMatchUseCaseDTO): Promise<MatchModel> {
     ValidateToSave.check(match);
     const newMatch = await this.matches.saveNewMatch(match);
+
     return newMatch;
   }
 

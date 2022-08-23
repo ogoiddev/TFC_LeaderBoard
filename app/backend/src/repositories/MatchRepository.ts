@@ -31,6 +31,7 @@ export default class MatchRepository implements IMatchRepository {
 
   async saveNewMatch(match: IMatchUseCaseDTO): Promise<MatchModel> {
     const matchSaved = await this.matchModel.create({ ...match, inProgress: true });
+    console.log(matchSaved);
     return matchSaved;
   }
 
