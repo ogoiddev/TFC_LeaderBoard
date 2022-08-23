@@ -4,6 +4,7 @@ import ErrorType from '../../utils/error/errorConstructor';
 import { IMatchUseCaseDTO } from './MatchUseCaseDTO';
 import { IMatchUseCase } from './interfaces/IMatchUseCase';
 import MatchModel from '../../database/models/MatchModel';
+import ValidateToSave from './validations/ValidateToSave';
 
 class MatchUseCase implements IMatchUseCase {
   constructor(private matches: IMatchRepository) { }
@@ -20,6 +21,7 @@ class MatchUseCase implements IMatchUseCase {
   }
 
   async saveNewMatch(match: IMatchUseCaseDTO): Promise<MatchModel> {
+    ValidateToSave.check(match);
     const newMatch = await this.matches.saveNewMatch(match);
     return newMatch;
   }
