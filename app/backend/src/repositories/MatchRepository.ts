@@ -1,12 +1,14 @@
-import { IMatchUseCaseDTO } from '../useCases/Match/MatchUseCaseDTO';
+import { IMatchToSaveDTO, IMatchUpdateScoreDTO } from '../useCases/Match/MatchUseCaseDTO';
 import MatchModel from '../database/models/MatchModel';
 import TeamModel from '../database/models/TeamModel';
 import Match from '../entities/Match';
 import { IMatchRepository } from './interfaces/IMatchRepository';
 
 export default class MatchRepository implements IMatchRepository {
-  private matchModel = MatchModel;
-  private teamModel = TeamModel;
+  constructor(
+    private matchModel = MatchModel,
+    private teamModel = TeamModel,
+  ) { }
 
   async getAll(): Promise<Match[] | []> {
     const MatchList = await this.matchModel.findAll({
@@ -29,7 +31,7 @@ export default class MatchRepository implements IMatchRepository {
     return match as Match | null;
   }
 
-  async saveNewMatch(match: IMatchUseCaseDTO): Promise<MatchModel> {
+  async saveNewMatch(match: IMatchToSaveDTO): Promise<MatchModel> {
     const matchSaved = await this.matchModel.create({ ...match, inProgress: true });
     console.log(matchSaved);
     return matchSaved;
@@ -37,5 +39,9 @@ export default class MatchRepository implements IMatchRepository {
 
   async updateMatchStatus(id: number): Promise<void> {
     await this.matchModel.update({ inProgress: false }, { where: { id } });
+  }
+
+  async updateMatchScore(score: IMatchUpdateScoreDTO, id: number): Promise<void> {
+    await this.matchModel.update(score, { where: { id } });
   }
 }

@@ -29,6 +29,13 @@ class MatchController implements ITeamController {
     await this.matches.updateMatchStatus(Number(id));
     res.status(200).json({ message: 'Finished' });
   }
+
+  async updateMatchScore(req: Request, res: Response) {
+    const { id } = req.params;
+    const score = req.body;
+    await this.matches.updateMatchScore(score, Number(id));
+    res.status(200).json({ message: 'Score Updated' });
+  }
 }
 
 export default MatchController;

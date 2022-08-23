@@ -15,4 +15,4 @@ export type RepositoryTypes =
   ILoginRepository | ITeamRepository | IMatchRepository;
 
 export type UseCaseTypes =
-ILoginUseCase | ITeamUseCase | IMatchUseCase;
+  ILoginUseCase | ITeamUseCase | IMatchUseCase;

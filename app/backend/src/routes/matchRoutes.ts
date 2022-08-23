@@ -19,6 +19,11 @@ MatchRouter.patch(
   (req: Request, res: Response) => toMatches.updateMatchStatus(req, res),
 );
 
+MatchRouter.patch(
+  '/matches/:id',
+  (req: Request, res: Response) => toMatches.updateMatchScore(req, res),
+);
+
 MatchRouter.post(
   '/matches',
   authMiddleware.checkAuth,
