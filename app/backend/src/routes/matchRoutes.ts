@@ -1,4 +1,5 @@
 import { Request, Response, Router } from 'express';
+import authMiddleware from '../middleware/authMiddleware';
 import { toMatches } from '../factories';
 
 const MatchRouter = Router();
@@ -20,6 +21,7 @@ MatchRouter.patch(
 
 MatchRouter.post(
   '/matches',
+  authMiddleware.checkAuth,
   (req: Request, res: Response) => toMatches.saveNewMatch(req, res),
 );
 

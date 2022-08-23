@@ -8,7 +8,7 @@ class ValidateJWT {
         const { data } = verify(token, process.env.JWT_SECRET) as JwtPayload;
         return data;
       } catch (error) {
-        throw new ErrorType(401, 'Invalid token');
+        throw new ErrorType(401, 'Token must be a valid token');
       }
     }
   }
