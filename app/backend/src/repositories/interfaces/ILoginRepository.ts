@@ -1,5 +1,5 @@
-import User from '../../entities/User';
+import UserModel from '../../database/models/UserModel';
 
 export interface ILoginRepository {
-  getByEmail(email: string): Promise<User | null>;
+  getByEmail(email: string): Promise<UserModel>;
 }

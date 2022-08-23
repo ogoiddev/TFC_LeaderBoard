@@ -3,10 +3,10 @@ import LoginUserRequestValidator from '../../utils/JOI/loginSchema';
 import { ILoginController } from './interfaces/ILoginController';
 import { ILoginUseCase } from './interfaces/ILoginUseCase';
 
-require('express-async-errors');
-
 class LoginController implements ILoginController {
-  constructor(private getToken: ILoginUseCase) { }
+  constructor(private getToken: ILoginUseCase) {
+    this.checkToToken = this.checkToToken.bind(this);
+  }
 
   async checkToToken(req: Request, res: Response) {
     const loginUserRequest = req.body;

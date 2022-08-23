@@ -1,15 +1,14 @@
-import { verify, JwtPayload } from 'jsonwebtoken';
+import { verify } from 'jsonwebtoken';
+import User from '../../entities/User';
 import ErrorType from '../error/errorConstructor';
 
 class ValidateJWT {
   static validateToken(token: string) {
-    if (process.env.JWT_SECRET) {
-      try {
-        const { data } = verify(token, process.env.JWT_SECRET) as JwtPayload;
-        return data;
-      } catch (error) {
-        throw new ErrorType(401, 'Token must be a valid token');
-      }
+    try {
+      const dataValues = verify(token, process.env.JWT_SECRET || 'jwt_secret') as User;
+      return dataValues.role;
+    } catch (error) {
+      throw new ErrorType(401, 'Token must be a valid token');
     }
   }
 }

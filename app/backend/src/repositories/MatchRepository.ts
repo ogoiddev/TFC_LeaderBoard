@@ -5,10 +5,8 @@ import Match from '../entities/Match';
 import { IMatchRepository } from './interfaces/IMatchRepository';
 
 export default class MatchRepository implements IMatchRepository {
-  constructor(
-    private matchModel = MatchModel,
-    private teamModel = TeamModel,
-  ) { }
+  private matchModel = MatchModel;
+  private teamModel = TeamModel;
 
   async getAll(): Promise<Match[] | []> {
     const MatchList = await this.matchModel.findAll({
@@ -33,7 +31,7 @@ export default class MatchRepository implements IMatchRepository {
 
   async saveNewMatch(match: IMatchToSaveDTO): Promise<MatchModel> {
     const matchSaved = await this.matchModel.create({ ...match, inProgress: true });
-    console.log(matchSaved);
+
     return matchSaved;
   }
 

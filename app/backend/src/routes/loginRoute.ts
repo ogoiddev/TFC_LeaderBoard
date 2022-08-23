@@ -1,11 +1,11 @@
-import { Request, Response, Router } from 'express';
-import AuthController from '../useCases/AuthValidate/AuthController';
+import { Router } from 'express';
 import { toLogin } from '../factories';
+import AuthController from '../useCases/AuthValidate/AuthController';
 
 const LoginRouter = Router();
 
 LoginRouter.get('/login/validate', AuthController.checkAuth);
 
-LoginRouter.post('/login', (req: Request, res: Response) => toLogin.checkToToken(req, res));
+LoginRouter.post('/login', toLogin.checkToToken);
 
 export default LoginRouter;

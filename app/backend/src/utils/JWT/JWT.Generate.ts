@@ -1,15 +1,13 @@
 import * as jwt from 'jsonwebtoken';
-import User from '../../entities/User';
+import UserModel from '../../database/models/UserModel';
 
 class JWT {
-  static createToken(user: User) {
-    if (process.env.JWT_SECRET) {
-      const token = jwt.sign({ data: user }, process.env.JWT_SECRET, {
-        expiresIn: 60 * 60 * 24 * 7,
-        algorithm: 'HS256',
-      });
-      return token;
-    }
+  static createToken(user: UserModel) {
+    const token = jwt.sign({ data: user }, process.env.JWT_SECRET || 'jwt_secret', {
+      expiresIn: 60 * 60 * 24 * 7,
+      algorithm: 'HS256',
+    });
+    return token;
   }
 }
 
