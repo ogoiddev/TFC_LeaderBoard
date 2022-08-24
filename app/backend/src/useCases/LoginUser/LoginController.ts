@@ -12,7 +12,6 @@ export default class LoginController implements ILoginController {
     const loginUserRequest = req.body;
     LoginUserRequestValidator.check(loginUserRequest);
 
-    console.log(this.getToken);
     const token = await this.getToken.getByEmail(loginUserRequest.email);
     res.status(200).json({ token });
   }

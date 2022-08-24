@@ -8,6 +8,11 @@ export default class MatchRepository implements IMatchRepository {
   private matchModel = MatchModel;
   private teamModel = TeamModel;
 
+  async getAllFinished(): Promise<Match[] | []> {
+    const MatchList = await this.matchModel.findAll({ where: { inProgress: false } });
+    return MatchList as Match[] | [];
+  }
+
   async getAll(): Promise<Match[] | []> {
     const MatchList = await this.matchModel.findAll({
       include: [{

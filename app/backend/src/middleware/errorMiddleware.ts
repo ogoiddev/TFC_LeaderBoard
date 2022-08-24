@@ -3,8 +3,6 @@ import ErrorType from '../utils/error/errorConstructor';
 
 class Errors {
   static middleware = (error: ErrorType, _req: Request, res: Response, _next: NextFunction) => {
-    console.log(error.name);
-
     if (error.name === 'SequelizeForeignKeyConstraintError') {
       const status = 404;
       const message = 'There is no team with such id!';

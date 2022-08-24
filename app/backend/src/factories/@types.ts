@@ -1,3 +1,5 @@
+import { IHomeLeaderBoardUseCase }
+  from '../useCases/LeaderBoard/interfaces/IHomeLeaderBoardUseCase';
 import { ILoginRepository } from '../repositories/interfaces/ILoginRepository';
 import { IMatchRepository } from '../repositories/interfaces/IMatchRepository';
 import { ITeamRepository } from '../repositories/interfaces/ITeamRepository';
@@ -10,11 +12,11 @@ import { IMatchUseCase } from '../useCases/Match/interfaces/IMatchUseCase';
 import { ITeamController } from '../useCases/Team/interfaces/ITeamController';
 import { ITeamUseCase } from '../useCases/Team/interfaces/ITeamUseCase';
 
-export type ControllerTypes =
-  ILoginController | ITeamController | IMatchController | IHomeLeaderBoardController;
-
 export type RepositoryTypes =
-  ILoginRepository | ITeamRepository | IMatchRepository;
+ILoginRepository | ITeamRepository | IMatchRepository;
 
 export type UseCaseTypes =
-  ILoginUseCase | ITeamUseCase | IMatchUseCase;
+ILoginUseCase | ITeamUseCase | IMatchUseCase | IHomeLeaderBoardUseCase;
+
+export type ControllerTypes =
+  ILoginController | ITeamController | IMatchController | IHomeLeaderBoardController;

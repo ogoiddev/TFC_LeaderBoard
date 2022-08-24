@@ -4,6 +4,7 @@ import { IMatchUpdateScoreDTO, IMatchToSaveDTO } from '../../useCases/Match/Matc
 
 export interface IMatchRepository {
   getAll(): Promise<Match[] | []>;
+  getAllFinished(): Promise<Match[] | []>;
   getById(id: number): Promise<Match | null>;
 
   saveNewMatch(match: IMatchToSaveDTO): Promise<MatchModel>;
