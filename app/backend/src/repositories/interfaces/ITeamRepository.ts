@@ -1,6 +1,6 @@
-import Team from '../../entities/Team';
+import { ITeam } from '../../entities/interfaces/ITeam';
 
 export interface ITeamRepository {
-  getAll(): Promise<Team[] | []>;
-  getById(id: number): Promise<Team | null>
+  getAll(): Promise<ITeam[] | []>;
+  getById(id: number): Promise<ITeam | null>
 }

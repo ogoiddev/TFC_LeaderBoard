@@ -1,11 +1,11 @@
 import MatchModel from '../../database/models/MatchModel';
-import Match from '../../entities/Match';
-import { IMatchUpdateScoreDTO, IMatchToSaveDTO } from '../../useCases/Match/MatchUseCaseDTO';
+import { IMatch } from '../../entities/interfaces/IMatch';
+import { IMatchToSaveDTO, IMatchUpdateScoreDTO } from '../../useCases/Match/MatchUseCaseDTO';
 
 export interface IMatchRepository {
-  getAll(): Promise<Match[] | []>;
-  getAllFinished(): Promise<Match[] | []>;
-  getById(id: number): Promise<Match | null>;
+  getAll(): Promise<IMatch[] | []>;
+  getAllFinished(): Promise<IMatch[] | []>;
+  getById(id: number): Promise<IMatch | null>;
 
   saveNewMatch(match: IMatchToSaveDTO): Promise<MatchModel>;
   updateMatchStatus(id: number): Promise<void>;

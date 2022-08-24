@@ -1,7 +1,7 @@
-import { ILeaderBoard } from './interfaces/ILeaderBoard';
-import { IPropsGames } from './interfaces/IPropGames';
+import { ITableTeamResults } from './interfaces/ITableTeamResults';
+import { ITablePropMatch } from './interfaces/ITablePropMatch';
 
-export default class LeaderBoard implements ILeaderBoard {
+export default class TableTeamResults implements ITableTeamResults {
   name: string;
   totalPoints: number;
   totalGames: number;
@@ -27,19 +27,16 @@ export default class LeaderBoard implements ILeaderBoard {
     this.efficiency = 0;
   }
 
-  addGame(props: IPropsGames) {
+  addNewMatch(props: ITablePropMatch) {
+    this.totalGames += 1;
     this.totalVictories += props.win;
     this.totalDraws += props.draws;
+    this.totalPoints = this.totalVictories * 3 + this.totalDraws;
     this.totalLosses += props.lose;
     this.goalsFavor += props.goals;
     this.goalsOwn += props.goalsOwn;
-  }
-
-  end() {
-    this.totalPoints = this.totalVictories * 3;
-    this.totalGames += 1;
-    this.efficiency = ((this.totalPoints / (this.totalGames * 3)) * 100);
-    this.efficiency.toFixed(2);
     this.goalsBalance = this.goalsFavor - this.goalsOwn;
+    this.efficiency = (this.totalPoints / (this.totalGames * 3)) * 100;
+    this.efficiency = Math.round(this.efficiency * 100) / 100;
   }
 }

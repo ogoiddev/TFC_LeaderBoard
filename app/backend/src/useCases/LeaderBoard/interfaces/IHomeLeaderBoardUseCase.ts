@@ -1,5 +1,5 @@
-import { ILeaderBoard } from '../../../entities/interfaces/ILeaderBoard';
+import { ITableTeamResults } from '../../../entities/interfaces/ITableTeamResults';
 
 export interface IHomeLeaderBoardUseCase {
-  fillBoard(): Promise<ILeaderBoard[] | []>;
+  fillLeaderBoard(): Promise<ITableTeamResults[] | []>;
 }

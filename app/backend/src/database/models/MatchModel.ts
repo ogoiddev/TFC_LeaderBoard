@@ -1,9 +1,9 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '.';
-import Match from '../../entities/Match';
+import { IMatch } from '../../entities/interfaces/IMatch';
 import TeamModel from './TeamModel';
 
-class MatchModel extends Model<Match> { }
+class MatchModel extends Model<IMatch> { }
 
 MatchModel.init({
   id: {

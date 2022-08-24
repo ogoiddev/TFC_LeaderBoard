@@ -7,10 +7,6 @@ class Match implements IMatch {
   awayTeam: number;
   awayTeamGoals: number;
   inProgress: boolean;
-
-  constructor(props: Match) {
-    Object.assign(this, props);
-  }
 }
 
 export default Match;

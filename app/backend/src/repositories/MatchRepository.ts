@@ -1,19 +1,20 @@
-import { IMatchToSaveDTO, IMatchUpdateScoreDTO } from '../useCases/Match/MatchUseCaseDTO';
 import MatchModel from '../database/models/MatchModel';
 import TeamModel from '../database/models/TeamModel';
+import { IMatch } from '../entities/interfaces/IMatch';
 import Match from '../entities/Match';
+import { IMatchToSaveDTO, IMatchUpdateScoreDTO } from '../useCases/Match/MatchUseCaseDTO';
 import { IMatchRepository } from './interfaces/IMatchRepository';
 
 export default class MatchRepository implements IMatchRepository {
   private matchModel = MatchModel;
   private teamModel = TeamModel;
 
-  async getAllFinished(): Promise<Match[] | []> {
+  async getAllFinished(): Promise<IMatch[] | []> {
     const MatchList = await this.matchModel.findAll({ where: { inProgress: false } });
     return MatchList as Match[] | [];
   }
 
-  async getAll(): Promise<Match[] | []> {
+  async getAll(): Promise<IMatch[] | []> {
     const MatchList = await this.matchModel.findAll({
       include: [{
         model: this.teamModel,
@@ -29,7 +30,7 @@ export default class MatchRepository implements IMatchRepository {
     return MatchList as Match[] | [];
   }
 
-  async getById(id: number): Promise<Match | null> {
+  async getById(id: number): Promise<IMatch | null> {
     const match = await this.matchModel.findOne({ where: { id } });
     return match as Match | null;
   }

@@ -8,7 +8,7 @@ export default class HomeLeaderBoardController implements IHomeLeaderBoardContro
   }
 
   async getBoardList(_req: Request, res: Response) {
-    const boardList = await this.getBoard.fillBoard();
+    const boardList = await this.getBoard.fillLeaderBoard();
     res.status(200).json(boardList);
   }
 }

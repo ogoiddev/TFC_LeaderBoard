@@ -1,8 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
-import User from '../../entities/User';
 import db from '.';
+import { IUser } from '../../entities/interfaces/IUser';
 
-class UserModel extends Model<User> {}
+class UserModel extends Model<IUser> {}
 
 UserModel.init({
   id: {
