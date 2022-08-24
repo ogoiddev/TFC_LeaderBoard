@@ -3,7 +3,7 @@ import LoginUserRequestValidator from '../../utils/JOI/loginSchema';
 import { ILoginController } from './interfaces/ILoginController';
 import { ILoginUseCase } from './interfaces/ILoginUseCase';
 
-class LoginController implements ILoginController {
+export default class LoginController implements ILoginController {
   constructor(private getToken: ILoginUseCase) {
     this.checkToToken = this.checkToToken.bind(this);
   }
@@ -17,5 +17,3 @@ class LoginController implements ILoginController {
     res.status(200).json({ token });
   }
 }
-
-export default LoginController;
