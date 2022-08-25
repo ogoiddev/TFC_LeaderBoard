@@ -6,7 +6,7 @@ import { IMatchRepository } from '../../repositories/interfaces/IMatchRepository
 import TeamRepository from '../../repositories/TeamRepository';
 import SortBoardByRules from './SortBoardByRulesUseCase';
 
-export default class HomeLeaderBoardUseCase {
+export default class AwayLeaderBoardUseCase {
   constructor(
     private matches: IMatchRepository,
     private teams = new TeamRepository(),
@@ -17,13 +17,13 @@ export default class HomeLeaderBoardUseCase {
       const team = new TableTeamResults(each.teamName);
 
       allMatches.forEach((match) => {
-        if (each.id === match.homeTeam) {
+        if (each.id === match.awayTeam) {
           team.addNewMatch({
-            win: match.homeTeamGoals > match.awayTeamGoals ? 1 : 0,
-            draws: match.homeTeamGoals === match.awayTeamGoals ? 1 : 0,
-            lose: match.homeTeamGoals < match.awayTeamGoals ? 1 : 0,
-            goals: match.homeTeamGoals,
-            goalsOwn: match.awayTeamGoals,
+            win: match.awayTeamGoals > match.homeTeamGoals ? 1 : 0,
+            draws: match.awayTeamGoals === match.homeTeamGoals ? 1 : 0,
+            lose: match.awayTeamGoals < match.homeTeamGoals ? 1 : 0,
+            goals: match.awayTeamGoals,
+            goalsOwn: match.homeTeamGoals,
           });
         }
       });
@@ -35,7 +35,7 @@ export default class HomeLeaderBoardUseCase {
   async fillLeaderBoard(): Promise<ITableTeamResults[]> {
     const allMatches = await this.matches.getAllFinished();
     const allTeams = await this.teams.getAll();
-    const results: ITableTeamResults[] = HomeLeaderBoardUseCase.calcValues(allTeams, allMatches);
+    const results: ITableTeamResults[] = AwayLeaderBoardUseCase.calcValues(allTeams, allMatches);
 
     const leaderBoardSorted = SortBoardByRules.sort(results);
 
