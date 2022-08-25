@@ -1,15 +1,12 @@
-import * as sinon from 'sinon';
 import * as chai from 'chai';
+import * as sinon from 'sinon';
+import { app } from '../app';
 // @ts-ignore
 
 import chaiHttp = require('chai-http');
-import { app } from '../app';
 
-import UserModel from '../database/models/UserModel';
 import { Model } from 'sequelize/types';
-import JWT from '../utils/JWT/JWT.Generate';
-import User from '../entities/User';
-import { IUser } from '../entities/interfaces/IUser';
+import UserModel from '../database/models/UserModel';
 
 chai.use(chaiHttp);
 
@@ -18,7 +15,7 @@ const { expect } = chai;
 describe('/login Route', () => {
 
   afterEach(()=>{
-    (UserModel.findOne as sinon.SinonStub).restore();
+    sinon.restore();
   })
 
     it('should be able to login with right Body params', async () => {

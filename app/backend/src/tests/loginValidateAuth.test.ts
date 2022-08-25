@@ -28,7 +28,7 @@ describe('/login/validate Route', () => {
       .set('Authorization', 'wrong')
         
     expect(response.status).to.equal(401)
-
+    sinon.restore()
   })
 
 
