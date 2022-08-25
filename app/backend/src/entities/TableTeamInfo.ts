@@ -1,7 +1,7 @@
 import { ITableTeamResults } from './interfaces/ITableTeamResults';
 import { ITablePropMatch } from './interfaces/ITablePropMatch';
 
-export default class TableTeamResults implements ITableTeamResults {
+export default class TableTeamInfo implements ITableTeamResults {
   name: string;
   totalPoints: number;
   totalGames: number;

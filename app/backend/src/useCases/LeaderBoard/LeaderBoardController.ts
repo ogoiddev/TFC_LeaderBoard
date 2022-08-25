@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { IHomeLeaderBoardController } from './interfaces/IHomeLeaderBoardController';
 import { IHomeLeaderBoardUseCase } from './interfaces/IHomeLeaderBoardUseCase';
 
-export default class HomeLeaderBoardController implements IHomeLeaderBoardController {
+export default class LeaderBoardController implements IHomeLeaderBoardController {
   constructor(private getBoard: IHomeLeaderBoardUseCase) {
     this.getBoardList = this.getBoardList.bind(this);
   }

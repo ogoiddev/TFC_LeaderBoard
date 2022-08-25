@@ -1,5 +1,5 @@
 import MatchRepository from '../repositories/MatchRepository';
-import HomeLeaderBoardController from '../useCases/LeaderBoard/HomeLeaderBoardController';
+import HomeLeaderBoardController from '../useCases/LeaderBoard/LeaderBoardController';
 import HomeLeaderBoardUseCase from '../useCases/LeaderBoard/HomeLeaderBoardUseCase';
 import Factory from './Factory';
 

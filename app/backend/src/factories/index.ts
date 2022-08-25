@@ -1,4 +1,4 @@
-import HomeLeaderBoardController from '../useCases/LeaderBoard/HomeLeaderBoardController';
+import HomeLeaderBoardController from '../useCases/LeaderBoard/LeaderBoardController';
 import LoginController from '../useCases/LoginUser/LoginController';
 import MatchController from '../useCases/Match/MatchController';
 import TeamController from '../useCases/Team/TeamController';
