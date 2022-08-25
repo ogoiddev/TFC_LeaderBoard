@@ -8,6 +8,7 @@ import chaiHttp = require('chai-http');
 import { Model } from 'sequelize/types';
 import MatchModel from '../database/models/MatchModel';
 import TeamModel from '../database/models/TeamModel';
+
 chai.use(chaiHttp);
 
 const { expect } = chai;
@@ -19,6 +20,9 @@ describe('/LeaderBoard Route', () => {
   // afterEach(() => {
   //   (MatchModel.findAll as sinon.SinonStub).restore();
   // })
+    afterEach(()=>{
+    sinon.restore();
+  })
 
     it('should return a Full LeaderBoard', async () => {
       sinon.stub(MatchModel, "findAll").resolves({} as Model[]);
@@ -27,8 +31,28 @@ describe('/LeaderBoard Route', () => {
       const response = await chai.request(app).get('/leaderboard')
       
       expect(response.status).to.equal(200)
+      
     })
-    sinon.restore()
+  
+    it('should return a Home LeaderBoard', async () => {
+      sinon.stub(MatchModel, "findAll").resolves({} as Model[]);
+      sinon.stub(TeamModel, "findAll").resolves({} as Model[]);
+      
+      const response = await chai.request(app).get('/leaderboard/home')
+      
+      expect(response.status).to.equal(200)
+      
+    })
+  
+    it('should return a Away LeaderBoard', async () => {
+      sinon.stub(MatchModel, "findAll").resolves({} as Model[]);
+      sinon.stub(TeamModel, "findAll").resolves({} as Model[]);
+      
+      const response = await chai.request(app).get('/leaderboard/away')
+      
+      expect(response.status).to.equal(200)
+      
+    })
     
 
 });
