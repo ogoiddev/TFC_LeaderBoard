@@ -1,14 +1,13 @@
-import * as sinon from 'sinon';
 import * as chai from 'chai';
+import * as sinon from 'sinon';
+import { app } from '../app';
 // @ts-ignore
 
 import chaiHttp = require('chai-http');
-import { app } from '../app';
 
-import Team from '../entities/Team'
-import TeamModel from '../database/models/TeamModel'
-import { teamList } from './mocks/teamsMock'
 import { Model } from 'sequelize/types';
+import TeamModel from '../database/models/TeamModel';
+import { teamList } from './mocks/teamsMock';
 
 chai.use(chaiHttp);
 
@@ -23,7 +22,7 @@ describe('/teams Route', () => {
   // })
 
     it('should return a list of Teams', async () => {
-      sinon.stub(TeamModel, "findAll").resolves(teamList as any);
+      sinon.stub(TeamModel, "findAll").returns(teamList as any);
       
       const response = await chai.request(app).get('/teams')
       

@@ -6,7 +6,7 @@ export default class TeamRepository implements ITeamRepository {
   private model = TeamModel;
 
   async getAll(): Promise<ITeam[] | []> {
-    const matches = await this.model.findAll() as ITeam[] | [];
+    const matches = await this.model.findAll({ raw: true }) as ITeam[] | [];
     return matches;
   }
 

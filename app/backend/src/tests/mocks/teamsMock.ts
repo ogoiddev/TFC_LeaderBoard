@@ -1,4 +1,6 @@
-export const teamList = [
+import { ITeam } from "../../entities/interfaces/ITeam";
+
+export const teamList:  ITeam[] = [
   {
     "id": 1,
     "teamName": "Avaí/Kindermann"
