@@ -72,6 +72,18 @@ RUN npx tsc
 CMD ["npm", "start"]
 ```
 
+## API documentation (Swagger)
+
+$ npm install swagger-autogen swagger-ui-express
+
+* to run the .json config do:
+
+$ npm run swagger-autogen
+
+## API secure (Helmet)
+
+$ npm install helmet
+
 
 
 

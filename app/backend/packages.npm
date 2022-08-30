@@ -3,3 +3,6 @@ cors
 @types/cors
 uuidv4
 express-async-errors
+swagger-autogen
+swagger-ui-express
+helmet
