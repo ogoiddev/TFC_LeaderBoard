@@ -1,20 +1,23 @@
-import { ILoginRepository } from '../../repositories/interfaces/ILoginRepository';
 import ErrorType from '../../utils/error/errorConstructor';
+import { ILoginRepository } from '../../repositories/ILoginRepository';
 import JWT from '../../utils/JWT/JWT.Generate';
-import { ILoginUseCase } from './interfaces/ILoginUseCase';
 
-class LoginUseCase implements ILoginUseCase {
-  constructor(private user: ILoginRepository) { }
+export default class LoginUseCase {
+  constructor(private repository: ILoginRepository) { }
 
-  async getByEmail(email: string): Promise<string> {
-    const userData = await this.user.getByEmail(email);
+  async getUserByEmail(email: string) {
+    const userData = await this.repository.getUserByEmail(email);
 
     if (!userData) throw new ErrorType(401, 'Incorrect email or password');
+
+    return userData;
+  }
+
+  async getToken(email: string) {
+    const userData = await this.getUserByEmail(email);
 
     const token = JWT.createToken(userData);
 
     return token;
   }
 }
-
-export default LoginUseCase;

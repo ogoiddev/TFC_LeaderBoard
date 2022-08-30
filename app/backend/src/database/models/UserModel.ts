@@ -2,30 +2,24 @@ import { DataTypes, Model } from 'sequelize';
 import db from '.';
 import { IUser } from '../../entities/interfaces/IUser';
 
-class UserModel extends Model<IUser> {}
+class UserModel extends Model implements IUser {
+  id: string;
+  username: string;
+  role: string;
+  email: string;
+  password: string;
+}
 
 UserModel.init({
   id: {
-    allowNull: false,
     primaryKey: true,
     type: DataTypes.STRING,
   },
-  username: {
-    allowNull: false,
-    type: DataTypes.STRING,
-  },
-  role: {
-    allowNull: false,
-    type: DataTypes.STRING,
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+  username: DataTypes.STRING,
+  role: DataTypes.STRING,
+  email: DataTypes.STRING,
+  password: DataTypes.STRING,
+
 }, {
   sequelize: db,
   modelName: 'users',

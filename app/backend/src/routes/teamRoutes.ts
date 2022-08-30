@@ -1,16 +1,10 @@
-import { Request, Response, Router } from 'express';
-import { toTeams } from '../factories';
+import { Router } from 'express';
+import Team from '../useCases/Team';
 
 const TeamRouter = Router();
 
-TeamRouter.get(
-  '/teams/:id',
-  (req: Request, res: Response) => toTeams.getById(req, res),
-);
+TeamRouter.get('/teams/:id', Team.teamController.getById);
 
-TeamRouter.get(
-  '/teams',
-  (req: Request, res: Response) => toTeams.getAll(req, res),
-);
+TeamRouter.get('/teams', Team.teamController.getAll);
 
 export default TeamRouter;

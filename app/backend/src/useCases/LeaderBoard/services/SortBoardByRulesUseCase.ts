@@ -1,6 +1,6 @@
 import { ITableTeamResults } from '../../../entities/interfaces/ITableTeamResults';
 
-export default class SortBoardUseCase {
+export default class SortBoardByRulesUseCase {
   static sort(list: ITableTeamResults[]) {
     const sorted = list.sort((b, a) => b.goalsOwn - a.goalsOwn)
       .sort((b, a) => a.goalsFavor - b.goalsFavor)

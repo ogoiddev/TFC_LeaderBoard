@@ -1,5 +1,5 @@
 import { ITableTeamResults } from './interfaces/ITableTeamResults';
-import { ITablePropMatch } from './interfaces/ITablePropMatch';
+import { ITablePropMatch } from './interfaces/ITablePropToCalcMatch';
 
 export default class TableTeamInfo implements ITableTeamResults {
   name: string;

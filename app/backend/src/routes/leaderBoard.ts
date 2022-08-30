@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { toAwayLeaderBoard, toFullLeaderBoard, toHomeLeaderBoard } from '../factories';
+import Boards from '../useCases/LeaderBoard';
 
 const LeaderBoardRouter = Router();
 
-LeaderBoardRouter.get('/leaderboard/home', toHomeLeaderBoard.getBoardList);
+LeaderBoardRouter.get('/leaderboard/home', Boards.getHomeBoard);
 
-LeaderBoardRouter.get('/leaderboard/away', toAwayLeaderBoard.getBoardList);
+LeaderBoardRouter.get('/leaderboard/away', Boards.getAwayBoard);
 
-LeaderBoardRouter.get('/leaderboard', toFullLeaderBoard.getBoardList);
+LeaderBoardRouter.get('/leaderboard', Boards.getFullBoard);
 
 export default LeaderBoardRouter;

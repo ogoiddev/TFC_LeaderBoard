@@ -1,22 +1,22 @@
+import { ITeam } from '../../entities/interfaces/ITeam';
+import { IMatch } from '../../entities/interfaces/IMatch';
 import { ITableTeamResults } from '../../entities/interfaces/ITableTeamResults';
-import { IMatchRepository } from '../../repositories/interfaces/IMatchRepository';
-import TeamRepository from '../../repositories/TeamRepository';
+import MatchRepository from '../../repositories/implementations/MatchRepository';
+import TeamRepository from '../../repositories/implementations/TeamRepository';
 import MatchCalcs from './services/MatchCalcs';
-import SortBoardByRules from './services/SortBoardByRulesUseCase';
+import SortBoardByRulesUseCase from './services/SortBoardByRulesUseCase';
 
 export default class HomeLeaderBoardUseCase {
-  constructor(
-    private matches: IMatchRepository,
-    private teams = new TeamRepository(),
-  ) { }
+  private matchesFor = new MatchRepository();
+  private teams = new TeamRepository();
 
   async fillLeaderBoard(): Promise<ITableTeamResults[]> {
-    const allMatches = await this.matches.getAllFinished();
-    const allTeams = await this.teams.getAll();
+    const allMatches = await this.matchesFor.getAllFinished() as IMatch[];
+    const allTeams = await this.teams.getAll() as ITeam[];
 
     const teamResults = allTeams.map((each) => MatchCalcs.homeCalcs(allMatches, each));
 
-    const leaderBoardSorted = SortBoardByRules.sort(teamResults);
+    const leaderBoardSorted = SortBoardByRulesUseCase.sort(teamResults);
 
     return leaderBoardSorted;
   }

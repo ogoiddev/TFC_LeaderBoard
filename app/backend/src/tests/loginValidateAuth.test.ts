@@ -1,11 +1,10 @@
-import * as sinon from 'sinon';
 import * as chai from 'chai';
+import * as sinon from 'sinon';
+import { app } from '../app';
+import { authorization } from './mocks/authMock';
 // @ts-ignore
 
 import chaiHttp = require('chai-http');
-import { app } from '../app';
-import ValidateJWT from '../utils/JWT/JWT.Validate';
-import {authorization} from './mocks/authMock'
 chai.use(chaiHttp);
 
 const { expect } = chai;

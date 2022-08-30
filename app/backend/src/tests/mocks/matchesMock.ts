@@ -1,6 +1,6 @@
-import { IMatchIncludeName } from '../../entities/interfaces/IMatchIncludeName'
+import { IMatchIncludeTeamName } from '../../entities/interfaces/IMatchIncludeTeamName'
 
-export const matchesMock: IMatchIncludeName[]  = [
+export const matchesMock: IMatchIncludeTeamName[]  = [
   {
     id: 1,
     homeTeam: 16,

@@ -1,20 +1,19 @@
-import MatchModel from '../database/models/MatchModel';
-import TeamModel from '../database/models/TeamModel';
-import { IMatch } from '../entities/interfaces/IMatch';
-import Match from '../entities/Match';
-import { IMatchToSaveDTO, IMatchUpdateScoreDTO } from '../useCases/Match/MatchUseCaseDTO';
-import { IMatchRepository } from './interfaces/IMatchRepository';
+import MatchModel from '../../database/models/MatchModel';
+import TeamModel from '../../database/models/TeamModel';
+import { IMatchToSaveDTO, IMatchUpdateScoreDTO } from '../../useCases/Match/MatchUseCaseDTO';
+import { IMatchRepository } from '../IMatchRepository';
 
 export default class MatchRepository implements IMatchRepository {
   private matchModel = MatchModel;
   private teamModel = TeamModel;
 
-  async getAllFinished(): Promise<IMatch[] | []> {
-    const MatchList = await this.matchModel.findAll({ where: { inProgress: false } });
-    return MatchList as Match[] | [];
+  async getAllFinished(): Promise<MatchModel[] | []> {
+    const MatchList = await this.matchModel.findAll({ where: { inProgress: false }, raw: true });
+
+    return MatchList;
   }
 
-  async getAll(): Promise<IMatch[] | []> {
+  async getAllWithTeamName(): Promise<MatchModel[] | []> {
     const MatchList = await this.matchModel.findAll({
       include: [{
         model: this.teamModel,
@@ -27,12 +26,13 @@ export default class MatchRepository implements IMatchRepository {
         attributes: ['teamName'],
       }],
     });
-    return MatchList as Match[] | [];
+
+    return MatchList;
   }
 
-  async getById(id: number): Promise<IMatch | null> {
-    const match = await this.matchModel.findOne({ where: { id } });
-    return match as Match | null;
+  async getById(id: number): Promise<MatchModel | null> {
+    const match = await this.matchModel.findOne({ where: { id }, raw: true });
+    return match;
   }
 
   async saveNewMatch(match: IMatchToSaveDTO): Promise<MatchModel> {

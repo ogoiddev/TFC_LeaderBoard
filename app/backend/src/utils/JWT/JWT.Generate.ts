@@ -1,10 +1,10 @@
 import * as jwt from 'jsonwebtoken';
-import UserModel from '../../database/models/UserModel';
+import { IUser } from '../../entities/interfaces/IUser';
 
 class JWT {
-  static createToken(user: UserModel) {
+  static createToken(user: Omit<IUser, 'password'>) {
     const token = jwt.sign({ data: user }, process.env.JWT_SECRET || 'jwt_secret', {
-      expiresIn: 60 * 60 * 24 * 7,
+      expiresIn: 2 * 7,
       algorithm: 'HS256',
     });
     return token;

@@ -1,5 +1,5 @@
-import { ITeam } from '../../../entities/interfaces/ITeam';
 import { IMatch } from '../../../entities/interfaces/IMatch';
+import { ITeam } from '../../../entities/interfaces/ITeam';
 import TableTeamInfo from '../../../entities/TableTeamInfo';
 
 export default class MatchCalcs {

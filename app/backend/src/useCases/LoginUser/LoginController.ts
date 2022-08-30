@@ -1,18 +1,19 @@
 import { Request, Response } from 'express';
 import LoginUserRequestValidator from '../../utils/JOI/loginSchema';
-import { ILoginController } from './interfaces/ILoginController';
-import { ILoginUseCase } from './interfaces/ILoginUseCase';
+import LoginUseCase from './LoginUseCase';
 
-export default class LoginController implements ILoginController {
-  constructor(private getToken: ILoginUseCase) {
-    this.checkToToken = this.checkToToken.bind(this);
+export default class LoginController {
+  constructor(private useCase: LoginUseCase) {
+
   }
 
-  async checkToToken(req: Request, res: Response) {
+  public checkToTokenUser = async (req: Request, res: Response) => {
     const loginUserRequest = req.body;
+
     LoginUserRequestValidator.check(loginUserRequest);
 
-    const token = await this.getToken.getByEmail(loginUserRequest.email);
+    const token = await this.useCase.getToken(loginUserRequest.email);
+
     res.status(200).json({ token });
-  }
+  };
 }

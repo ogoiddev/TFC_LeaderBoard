@@ -8,6 +8,8 @@ import chaiHttp = require('chai-http');
 import { Model } from 'sequelize/types';
 import MatchModel from '../database/models/MatchModel';
 import TeamModel from '../database/models/TeamModel';
+import { match } from './mocks/matchMock';
+import { teamList } from './mocks/teamsMock';
 
 chai.use(chaiHttp);
 
@@ -17,16 +19,17 @@ const { expect } = chai;
 
 describe('/LeaderBoard Route', () => {
 
-  // afterEach(() => {
-  //   (MatchModel.findAll as sinon.SinonStub).restore();
-  // })
-    afterEach(()=>{
-    sinon.restore();
+  afterEach(() => {
+    (MatchModel.findAll as sinon.SinonStub).restore();
+    (TeamModel.findAll as sinon.SinonStub).restore();
   })
+  //   afterEach(()=>{
+  //   sinon.restore();
+  // })
 
     it('should return a Full LeaderBoard', async () => {
-      sinon.stub(MatchModel, "findAll").resolves({} as Model[]);
-      sinon.stub(TeamModel, "findAll").resolves({} as Model[]);
+      sinon.stub(MatchModel, "findAll").resolves(match as unknown as MatchModel[]);
+      sinon.stub(TeamModel, "findAll").resolves(teamList as unknown as TeamModel[]);
       
       const response = await chai.request(app).get('/leaderboard')
       
