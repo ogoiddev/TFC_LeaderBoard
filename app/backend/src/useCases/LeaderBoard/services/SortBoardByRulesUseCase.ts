@@ -2,11 +2,13 @@ import { ITableTeamResults } from '../../../entities/interfaces/ITableTeamResult
 
 export default class SortBoardByRulesUseCase {
   static sort(list: ITableTeamResults[]) {
-    const sorted = list.sort((b, a) => b.goalsOwn - a.goalsOwn)
-      .sort((b, a) => a.goalsFavor - b.goalsFavor)
-      .sort((b, a) => a.goalsBalance - b.goalsBalance)
-      .sort((b, a) => a.totalVictories - b.totalVictories)
-      .sort((b, a) => a.totalPoints - b.totalPoints);
+    const sorted = list.sort((b, a) => (
+      a.totalPoints - b.totalPoints
+    || a.totalVictories - b.totalVictories
+    || a.goalsBalance - b.goalsBalance
+    || a.goalsFavor - b.goalsFavor
+    || b.goalsOwn - a.goalsOwn
+    ));
     return sorted;
   }
 }
