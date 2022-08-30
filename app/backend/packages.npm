@@ -5,3 +5,4 @@ uuidv4
 express-async-errors
 helmet
 bcrypt
+@types/bcrypt
