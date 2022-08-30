@@ -8,11 +8,11 @@ export default class LoginController {
   }
 
   public checkToTokenUser = async (req: Request, res: Response) => {
-    const loginUserRequest = req.body;
+    const { email, password } = req.body;
 
-    LoginUserRequestValidator.check(loginUserRequest);
+    LoginUserRequestValidator.check({ email, password });
 
-    const token = await this.useCase.getToken(loginUserRequest.email);
+    const token = await this.useCase.getToken(email, password);
 
     res.status(200).json({ token });
   };

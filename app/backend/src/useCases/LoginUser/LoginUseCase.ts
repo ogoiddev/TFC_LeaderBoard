@@ -1,3 +1,4 @@
+import { checkPassword } from '../../utils/Bcrypt/Validator';
 import ErrorType from '../../utils/error/errorConstructor';
 import { ILoginRepository } from '../../repositories/ILoginRepository';
 import JWT from '../../utils/JWT/JWT.Generate';
@@ -13,8 +14,10 @@ export default class LoginUseCase {
     return userData;
   }
 
-  async getToken(email: string) {
+  async getToken(email: string, password: string) {
     const userData = await this.getUserByEmail(email);
+
+    checkPassword(password, userData.password);
 
     const token = JWT.createToken(userData);
 
