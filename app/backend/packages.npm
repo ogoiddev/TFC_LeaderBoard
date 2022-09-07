@@ -6,3 +6,6 @@ express-async-errors
 helmet
 bcrypt
 @types/bcrypt
+swagger-ui-express
+swagger-autogen
+@types/swagger-ui-express

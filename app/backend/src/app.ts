@@ -4,6 +4,9 @@ import * as cors from 'cors';
 import * as express from 'express';
 
 import helmet from 'helmet';
+import * as swaggerUi from 'swagger-ui-express';
+import * as swaggerFile from './swagger_output.json';
+
 import Errors from './middleware/errorMiddleware';
 import Routes from './routes';
 
@@ -37,6 +40,8 @@ class App {
     this.app.use(Errors.middleware);
 
     this.app.use(helmet());
+
+    this.app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
   }
 
   public start(PORT: string | number):void {
