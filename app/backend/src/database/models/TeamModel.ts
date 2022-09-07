@@ -2,7 +2,10 @@ import { DataTypes, Model } from 'sequelize';
 import db from '.';
 import { ITeam } from '../../entities/interfaces/ITeam';
 
-class TeamModel extends Model<ITeam> { }
+class TeamModel extends Model implements ITeam {
+  id: number;
+  teamName: string;
+}
 
 TeamModel.init({
   id: {

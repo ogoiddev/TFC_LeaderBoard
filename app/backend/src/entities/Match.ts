@@ -1,7 +1,7 @@
 import { IMatch } from './interfaces/IMatch';
 
 class Match implements IMatch {
-  id?: number;
+  id: number;
   homeTeam: number;
   homeTeamGoals: number;
   awayTeam: number;

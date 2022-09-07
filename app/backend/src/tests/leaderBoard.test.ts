@@ -8,7 +8,7 @@ import chaiHttp = require('chai-http');
 import { Model } from 'sequelize/types';
 import MatchModel from '../database/models/MatchModel';
 import TeamModel from '../database/models/TeamModel';
-import { match } from './mocks/matchMock';
+import { matchesFinished } from './mocks/matchesFinishedMock';
 import { teamList } from './mocks/teamsMock';
 
 chai.use(chaiHttp);
@@ -28,8 +28,8 @@ describe('/LeaderBoard Route', () => {
   // })
 
     it('should return a Full LeaderBoard', async () => {
-      sinon.stub(MatchModel, "findAll").resolves(match as unknown as MatchModel[]);
-      sinon.stub(TeamModel, "findAll").resolves(teamList as unknown as TeamModel[]);
+      sinon.stub(MatchModel, "findAll").resolves(matchesFinished as MatchModel[]);
+      sinon.stub(TeamModel, "findAll").resolves(teamList as TeamModel[]);
       
       const response = await chai.request(app).get('/leaderboard')
       
@@ -38,8 +38,8 @@ describe('/LeaderBoard Route', () => {
     })
   
     it('should return a Home LeaderBoard', async () => {
-      sinon.stub(MatchModel, "findAll").resolves({} as Model[]);
-      sinon.stub(TeamModel, "findAll").resolves({} as Model[]);
+      sinon.stub(MatchModel, "findAll").resolves(matchesFinished as MatchModel[]);
+      sinon.stub(TeamModel, "findAll").resolves(teamList as TeamModel[]);
       
       const response = await chai.request(app).get('/leaderboard/home')
       
@@ -48,8 +48,8 @@ describe('/LeaderBoard Route', () => {
     })
   
     it('should return a Away LeaderBoard', async () => {
-      sinon.stub(MatchModel, "findAll").resolves({} as Model[]);
-      sinon.stub(TeamModel, "findAll").resolves({} as Model[]);
+      sinon.stub(MatchModel, "findAll").resolves(matchesFinished as MatchModel[]);
+      sinon.stub(TeamModel, "findAll").resolves(teamList as TeamModel[]);
       
       const response = await chai.request(app).get('/leaderboard/away')
       

@@ -3,7 +3,14 @@ import db from '.';
 import { IMatch } from '../../entities/interfaces/IMatch';
 import TeamModel from './TeamModel';
 
-class MatchModel extends Model<IMatch> { }
+class MatchModel extends Model implements IMatch {
+  declare id: number;
+  declare homeTeam: number;
+  declare homeTeamGoals: number;
+  declare awayTeam: number;
+  declare awayTeamGoals: number;
+  declare inProgress: boolean;
+}
 
 MatchModel.init({
   id: {

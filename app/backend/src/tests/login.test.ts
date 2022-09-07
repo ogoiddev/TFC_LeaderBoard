@@ -5,8 +5,8 @@ import { app } from '../app';
 
 import chaiHttp = require('chai-http');
 
-import { Model } from 'sequelize/types';
 import UserModel from '../database/models/UserModel';
+import { UserMock } from './mocks/userMock';
 
 chai.use(chaiHttp);
 
@@ -17,9 +17,9 @@ describe('/login Route', () => {
   afterEach(()=>{
     sinon.restore();
   })
-
+  
     it('should be able to login with right Body params', async () => {
-      sinon.stub(UserModel, "findOne").resolves({} as Model);
+      sinon.stub(UserModel, "findOne").resolves(UserMock as UserModel);
       
       const response = await chai.request(app).post('/login')
         .send({ email: 'admin@admin.com', password: 'secret_admin' })
@@ -71,6 +71,7 @@ describe('/login Route', () => {
 // import Example from '../database/models/ExampleModel';
 
 // import { Response } from 'superagent';
+
 
 // chai.use(chaiHttp);
 

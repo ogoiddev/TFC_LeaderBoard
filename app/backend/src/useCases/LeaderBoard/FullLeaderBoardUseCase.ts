@@ -1,5 +1,3 @@
-import { ITeam } from '../../entities/interfaces/ITeam';
-import { IMatch } from '../../entities/interfaces/IMatch';
 import { ITableTeamResults } from '../../entities/interfaces/ITableTeamResults';
 import MatchRepository from '../../repositories/implementations/MatchRepository';
 import TeamRepository from '../../repositories/implementations/TeamRepository';
@@ -11,8 +9,8 @@ export default class FullLeaderBoardUseCase {
   private teams = new TeamRepository();
 
   async fillLeaderBoard(): Promise<ITableTeamResults[]> {
-    const allMatches = await this.matchesFor.getAllFinished() as IMatch[];
-    const allTeams = await this.teams.getAll() as ITeam[];
+    const allMatches = await this.matchesFor.getAllFinished();
+    const allTeams = await this.teams.getAll();
 
     const teamResults = allTeams.map((each) => MatchCalcs.fullCalcs(allMatches, each));
 

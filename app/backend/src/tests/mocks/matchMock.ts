@@ -1,6 +1,6 @@
 import { IMatch } from "../../entities/interfaces/IMatch";
 
-export const match: IMatch = {
+export const matchMock: IMatch = {
   id: 1,
   homeTeam: 5,
   homeTeamGoals: 45,
