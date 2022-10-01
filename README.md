@@ -1,4 +1,4 @@
-# 🚧 README em construção 🚧
+# README em estudo:
 
 * Uma API RestFull NodeJs Express, com MySql by Docker, em TypeScript, com Classes (POO) e princípios S.O.L.I.D. aplicados.
 
