@@ -9,6 +9,15 @@
 
 # [API doc by Swagger](https://tfc-leaderboard.up.railway.app/api/doc/) (click to checkout)
 
+# TFC-Front-End
+
+### React - Front-End by Trybe to show API working
+
+# [Site - TFC-Leader_Board](https://tfc-front-end.vercel.app/) - (click to checkout)
+
+- user = admin@admin.com
+- pass = admin_secret
+
 
 ![Screenshot](https://github.com/ogoiddev/TFC_LeaderBoard/tree/main/app/assets/api_doc.png)
 
