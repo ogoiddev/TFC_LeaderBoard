@@ -5,10 +5,10 @@
     "title": "REST API - TFC",
     "description": ""
   },
-  "host": "https://tfc-leaderboard.up.railway.app",
+  "host": "tfc-leaderboard.up.railway.app",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/login/validate": {
