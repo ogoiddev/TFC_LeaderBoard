@@ -8,8 +8,6 @@ MatchRouter.get('/matches/:id', Match.matchController.getById);
 
 MatchRouter.get('/matches?', Match.matchController.getByStatusWithTeamName);
 
-// MatchRouter.get('/matches', Match.matchController.getAllWithTeamName);
-
 MatchRouter.patch('/matches/:id/finish', Match.matchController.updateMatchStatus);
 
 MatchRouter.patch('/matches/:id', Match.matchController.updateMatchScore);
