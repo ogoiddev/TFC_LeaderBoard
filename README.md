@@ -1,10 +1,31 @@
-# README em estudo:
+# README:
 
 * Uma API RestFull NodeJs Express, com MySql by Docker, em TypeScript, com Classes (POO) e princípios S.O.L.I.D. aplicados.
 
-* o FrondEnd foi aplicado pela Trybe, meu trabalho foi disponibilizar uma API para salvar gerenciar e fornecer informacoes de uma tabela com resultados de jogos de um campeonato de futebol.
+* Frameworks [ JWT, BCrypt, CORS, JOI, Swagger, Helmet, MySql2, Express ]
 
-## Passo a passo executado - Como eu trabalhei nesse projeto!
+* o FrondEnd foi aplicado pela Trybe, meu trabalho foi disponibilizar uma API para salvar gerenciar e fornecer informações de uma tabela com resultados de jogos de um campeonato de futebol.
+
+
+# [API doc by Swagger](https://tfc-leaderboard.up.railway.app/api/doc/) (click to checkout)
+
+
+![Screenshot](https://github.com/ogoiddev/TFC_LeaderBoard/tree/main/app/assets/api_doc.png)
+
+
+## To see project run in localhost
+
+* on default directory run commands below and checkout your localhost:3000
+
+```
+$ npm install
+```
+
+```
+$ npm run compose:up
+```
+
+## Passo a passo executado - Como eu trabalhei nesse projeto, as primeiras etapas...
 
 ## README
 
@@ -97,3 +118,4 @@ $ npm i
 
 * swagger-ui-express
 
+## JWT
