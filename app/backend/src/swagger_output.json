@@ -5,7 +5,7 @@
     "title": "REST API - TFC",
     "description": ""
   },
-  "host": "localhost:3001",
+  "host": "https://tfc-leaderboard.up.railway.app",
   "basePath": "/",
   "schemes": [
     "http"
