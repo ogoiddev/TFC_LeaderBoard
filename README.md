@@ -19,7 +19,7 @@
 - pass = admin_secret
 
 
-![Screenshot](https://github.com/ogoiddev/TFC_LeaderBoard/tree/main/app/assets/api_doc.png)
+![Screenshot](https://github.com/ogoiddev/TFC_LeaderBoard/blob/main/app/backend/assets/api_doc.png)
 
 
 ## To see project run in localhost
