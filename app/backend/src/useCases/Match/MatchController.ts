@@ -10,6 +10,17 @@ export default class MatchController {
     res.status(200).json(matches);
   };
 
+  public getByStatusWithTeamName = async (req: Request, res: Response) => {
+    const { inProgress } = req.query;
+    const status = inProgress === 'true';
+
+    if (inProgress === undefined) return this.getAllWithTeamName(req, res);
+
+    const matches = await this.matches.getByStatusWithTeamName(status);
+
+    res.status(200).json(matches);
+  };
+
   public getById = async (req: Request, res: Response) => {
     const { id } = req.params;
 

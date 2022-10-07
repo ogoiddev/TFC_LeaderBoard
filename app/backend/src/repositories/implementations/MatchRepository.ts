@@ -30,6 +30,24 @@ export default class MatchRepository implements IMatchRepository {
     return MatchList;
   }
 
+  async getByStatusWithTeamName(status: boolean): Promise<MatchModel[] | []> {
+    const MatchList = await this.matchModel.findAll({
+      where: { inProgress: status },
+      include: [{
+        model: this.teamModel,
+        as: 'teamHome',
+        attributes: ['teamName'],
+      },
+      {
+        model: this.teamModel,
+        as: 'teamAway',
+        attributes: ['teamName'],
+      }],
+    });
+
+    return MatchList;
+  }
+
   async getById(id: number): Promise<MatchModel | null> {
     const match = await this.matchModel.findOne({ where: { id }, raw: true });
     return match;

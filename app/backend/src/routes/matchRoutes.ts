@@ -6,7 +6,9 @@ const MatchRouter = Router();
 
 MatchRouter.get('/matches/:id', Match.matchController.getById);
 
-MatchRouter.get('/matches', Match.matchController.getAllWithTeamName);
+MatchRouter.get('/matches?', Match.matchController.getByStatusWithTeamName);
+
+// MatchRouter.get('/matches', Match.matchController.getAllWithTeamName);
 
 MatchRouter.patch('/matches/:id/finish', Match.matchController.updateMatchStatus);
 

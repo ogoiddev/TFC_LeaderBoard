@@ -13,6 +13,12 @@ export default class MatchUseCase {
     return matches;
   }
 
+  async getByStatusWithTeamName(status: boolean): Promise<MatchModel[] | []> {
+    const matches = await this.matches.getByStatusWithTeamName(status);
+
+    return matches;
+  }
+
   async getById(id: number): Promise<MatchModel> {
     const match = await this.matches.getById(id);
 

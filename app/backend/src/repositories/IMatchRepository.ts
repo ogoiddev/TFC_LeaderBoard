@@ -3,6 +3,8 @@ import { IMatchToSaveDTO, IMatchUpdateScoreDTO } from '../useCases/Match/MatchUs
 
 export interface IMatchRepository {
   getAllWithTeamName(): Promise<MatchModel[] | []>;
+  getByStatusWithTeamName(status: boolean): Promise<MatchModel[] | []>;
+
   getAllFinished(): Promise<MatchModel[] | []>
   getById(id: number): Promise<MatchModel | null>;
 
