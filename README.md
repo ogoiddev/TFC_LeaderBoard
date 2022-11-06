@@ -9,7 +9,7 @@
 
 # [API doc by Swagger](https://tfc-leaderboard.up.railway.app/api/doc/) (click to checkout)
 
-# TFC-Front-End
+### TFC-Front-End
 
 ### React - Front-End by Trybe to show API working
 
